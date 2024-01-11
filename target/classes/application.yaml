@@ -1,0 +1,41 @@
+spring.jpa.show-sql: true
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+spring.jpa.generate-ddl: true
+spring.jpa.hibernate.ddl-auto: update
+spring:
+  application:
+    name: Poc Sicred
+    version: 0.0.1-SNAPSHOT
+  datasource:
+    url: jdbc:h2:file:/data/assembleia-db
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+  console:
+    enabled: true
+    path: /h2-console
+server:
+  port: 8080
+  servlet:
+    context-path: /poc/v1
+logging:
+  level:
+    project:
+      user:
+        UserClient: DEBUG
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
